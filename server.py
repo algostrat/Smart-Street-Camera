@@ -1,3 +1,15 @@
+"""
+
+Before running server you must run the following commands within a python console in cwd
+in order to create the SQL table within data.sqlite
+
+'
+from streetlight_server import db
+db.create_all()
+'
+
+"""
+
 from flask import Flask, request, jsonify, render_template, flash, redirect, url_for, send_file
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -12,6 +24,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = basedir
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'dev'
 db = SQLAlchemy(app)
+# db.create_all()
 
 # Picture table. By default the table name is filecontent
 class FileContent(db.Model):
@@ -40,7 +53,6 @@ def render_picture(data):
 
 @app.route("/api/upload", methods=["POST"])
 def process_image():
-
     # read image file string data
     file = request.files['image']
     data = file.read()
@@ -59,8 +71,8 @@ def process_image():
     with open('static/img/'+name, 'wb') as fid:
         fid.write(data)
 
-
     return jsonify({'msg': 'success', 'size': 'not defined'})
+
 
 @app.route('/')
 def index():
@@ -80,7 +92,6 @@ def delete(id):
         return redirect('/')
     except:
         return 'There was a problem deleting that photo'
-
 
 
 if __name__ == "__main__":

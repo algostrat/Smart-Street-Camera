@@ -1,6 +1,4 @@
 """
-Ryan Wahler
-
 must enable camera in raspberry pi configuration first
 
 """
