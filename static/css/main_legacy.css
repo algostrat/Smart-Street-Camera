@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: WhiteSmoke;
+}
+
+#imgs {
+    width: 350px;
+    max-width:100%;
+
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+

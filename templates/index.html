@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Smart Streetlight Server</title>
+{% endblock %}
+
+{% block body %}
+<div class="content" align="center">
+    <h1 style="text-align: center">Streetlight Camera</h1>
+    <!-- -->
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center"> There are no photos.</h4>
+    {% else %}
+    <table class="table">
+        <tr>
+            <th>Photo</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+            <th>Speed</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+    </form>
+
+</div>
+{% endblock %}
