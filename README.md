@@ -1,10 +1,12 @@
 # Smart Street Camera
  Rasberry pi camera embedded device and webapp for sensor activated speed trap
+ 
+ ![photo](https://github.com/algostrat/Smart-Street-Camera/blob/main/ReadmeImages/frontphoto.jpg)
 
 # Hardware
 The main components for the hardware are the two HC-SR04 ultrasonic distance sensors, LEDs, and Pi camera module. The distance sensors work by sending a trigger signal and receiving and echo signal in order to calculate a distance. The Pi camera has a specific function library to work in accordance with the raspberry pi and must be first activated through the raspberry Pi’s configuration settings. The LEDs and distance sensors are powered and connected via the GPIO ports, and the camera is connected via the Camera Module Port on the Raspberry Pi itself. More details will be discussed in the below software section as part of the hardware’s client programming. The Raspberry Pi is powered by the USB-C power connection.
 
-[circuit diagram](https://github.com/algostrat/Smart-Street-Camera/blob/main/ReadmeImages/circuit%20diagram.JPG)
+![circuit diagram](https://github.com/algostrat/Smart-Street-Camera/blob/main/ReadmeImages/circuitdiagram.JPG)
 
 # Server program
 The server program is a Python Flask server using the Python SQLALCHEMY SQL bindings library. The server sets up and can be broken down into components for an index route for displaying the database instances, API route for data upload, and a delete route to allow the user to delete instances, as well as the SQL database itself. When the server receives the photo, mph, and timestamp information it appends it to the SQL database and the image is stored locally. The image and information then gets populated to an html table where the viewer can view the information as well as delete the instance.
@@ -15,7 +17,7 @@ Before running server you must run the following commands within a python consol
 from streetlight_server import db
 db.create_all()
 ```
-
+![web page](https://github.com/algostrat/Smart-Street-Camera/blob/main/ReadmeImages/webpage.png)
 
 
 # Client Program
